@@ -1,0 +1,27 @@
+{
+  "name": "learn-es6",
+  "version": "1.0.0",
+  "description": "some code for learn new features of es6 following [http://es6.ruanyifeng.com](http://es6.ruanyifeng.com)",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src -d lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/H2O-2/learn-es6.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/H2O-2/learn-es6/issues"
+  },
+  "homepage": "https://github.com/H2O-2/learn-es6#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-register": "^6.24.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
+  }
+}
