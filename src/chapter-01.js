@@ -82,6 +82,130 @@ console.log(window.globalTest2); // undefined
 
 
 
+// Class不存在变量提升（hoist），这一点与ES5完全不同。
+//new Foo(); // ReferenceError
+class Foo {}
+
+
+// super表示父类，子类必须在constructor方法中调用super方法，否则新建实例时会报错。这是因为子类没有自己的this对象，
+// 而是继承父类的this对象，然后对其进行加工。如果不调用super方法，子类就得不到this对象。
+class ColorPoint extends Point {
+  constructor(x, y, color) {
+    super(x, y); // 调用父类的constructor(x, y)
+    this.color = color;
+  }
+
+  toString() {
+    return this.color + ' ' + super.toString(); // 调用父类的toString()
+  }
+}
+
+
+
+// export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。函数与类同理
+
+// 报错
+//export 1;
+
+// 报错
+/*
+var m = 1;
+export m;
+*/
+
+// 正确写法：
+
+// 写法一
+export var m = 1;
+
+// 写法二
+var m = 1;
+export {m};
+
+// 写法三
+var n = 1;
+export {n as m};
+
+
+
+
+
+
+//import命令具有提升效果，会提升到整个模块的头部，首先执行。因为import命令是编译阶段执行的，在代码运行之前。不能使用表达式和变量
+foo();
+
+import { foo } from 'my_module'; // foo()正确执行
+
+
+
+// 报错
+import { 'f' + 'oo' } from 'my_module';
+
+// 报错
+let module = 'my_module';
+import { foo } from module;
+
+// 报错
+if (x === 1) {
+  import { foo } from 'module1';
+} else {
+  import { foo } from 'module2';
+}
+
+
+
+//除了指定加载某个输出值，还可以使用整体加载，即用星号（*）指定一个对象，所有输出值都加载在这个对象上面。
+
+// circle.js
+
+export function area(radius) {
+  return Math.PI * radius * radius;
+}
+
+export function circumference(radius) {
+  return 2 * Math.PI * radius;
+}
+
+// main.js
+
+import * as circle from './circle';
+
+console.log('圆面积：' + circle.area(4));
+console.log('圆周长：' + circle.circumference(14));
+
+//整体加载的对象不允许运行时改变
+import * as circle from './circle';
+
+// 下面两行都是不允许的
+circle.foo = 'hello';
+circle.area = function () {};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
