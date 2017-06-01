@@ -278,5 +278,9 @@ var getTempItem = id => ({ id: id, name: "Temp" });
 
 
 
-
+for (var i = 0; i < 5; i++) {
+  setTimeout(function() {
+    console.log("testing: ", i);
+  }, 5000*i);
+}
 
