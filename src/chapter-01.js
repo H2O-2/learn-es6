@@ -114,7 +114,7 @@ export m;
 */
 
 // 正确写法：
-
+/*
 // 写法一
 export var m = 1;
 
@@ -125,7 +125,6 @@ export {m};
 // 写法三
 var n = 1;
 export {n as m};
-
 
 
 
@@ -182,7 +181,7 @@ circle.area = function () {};
 
 
 
-
+*/
 
 
 
@@ -398,7 +397,7 @@ var f = function () { return 5; };
 // 由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号。
 var getTempItem = id => ({ id: id, name: "Temp" });
 
-
+/*
 
 // Class不存在变量提升（hoist），这一点与ES5完全不同。
 //new Foo(); // ReferenceError
@@ -417,7 +416,7 @@ class ColorPoint extends Point {
     return this.color + ' ' + super.toString(); // 调用父类的toString()
   }
 }
-
+*/
 
 
 // export命令规定的是对外的接口，必须与模块内部的变量建立一一对应关系。函数与类同理
@@ -467,8 +466,6 @@ for (var i = 0; i < 5; i++) {
   }, 5000*i);
 }
 
-<<<<<<< HEAD
-=======
 export function circumference(radius) {
   return 2 * Math.PI * radius;
 }
@@ -527,4 +524,50 @@ let emperor = new Emperor();
 
 console.assert(emperor === puppet, 'Puppet it is :(');
 console.assert(emperor.rules === false, 'No idea how to rule :(');
+
+
+
+window.onload = function() {
+  function Button(){
+    this.clicked = false;
+    this.click = function(){
+      console.log('inside this', this);
+      this.clicked = true;
+      console.log('button clicked: ', button.clicked);
+    };
+  }
+  var button = new Button();
+
+  var button = new Button();
+  var elem = document.getElementById("test");
+  elem.addEventListener("click", button.click);
+}
+
+
+var outerValue = "samurai";
+var later;
+
+function outerFunction(){
+    var innerValue = "ninja";
+    function innerFunction(){
+      console.assert(outerValue === "samurai", "I can see the samurai.");
+      console.assert(innerValue === "ninja", "I can see the ninja.")
+    }
+    
+    later = innerFunction;
+}
+
+outerFunction();
+later();
+
+
+const testArr = [];
+
+testArr.push('modified');
+console.log('const array', testArr);
+
+
+
+
+
 
