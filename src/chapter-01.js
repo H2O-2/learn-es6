@@ -601,3 +601,14 @@ var imposter = {};
 imposter.getFeints = ninja1.getFeints;
 console.log('fake private: ', imposter.getFeints());
 
+
+
+
+
+
+
+sdfsdfds
+
+
+
+
