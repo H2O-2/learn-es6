@@ -567,7 +567,37 @@ testArr.push('modified');
 console.log('const array', testArr);
 
 
+function testOverwrite() {
+  return 0;
+}
+
+function testOverwrite() {
+  return 100;
+}
+
+console.log('testOverwrite: ', testOverwrite());
+
+console.assert(typeof fun === "function", "We access the function");
+var fun = 3;
+console.assert(typeof fun === "number", "Now we access the number");
+function fun(){}
+console.assert(typeof fun === "number", "Still a number");
 
 
 
+function Ninja() {
+  var feints = 0;
+  this.getFeints = function(){
+    return feints;
+  };
+  this.feint = function(){
+    feints++;
+  };
+}
+
+var ninja1 = new Ninja();
+ninja1.feint();
+var imposter = {};
+imposter.getFeints = ninja1.getFeints;
+console.log('fake private: ', imposter.getFeints());
 
