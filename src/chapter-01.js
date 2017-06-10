@@ -606,7 +606,7 @@ console.log('fake private: ', imposter.getFeints());
 function* GeneratorTest() {
   yield "test1";
   console.log('Generator Restart');
-  yield "test2"
+  yield "test2";
 }
 
 const genIter = GeneratorTest();
@@ -614,6 +614,76 @@ const genIter = GeneratorTest();
 console.log('gen 1: ', genIter.next());
 console.log('gen 2: ', genIter.next());
 console.log('gen 3: ', genIter.next());
+
+function* GeneratorPassVal(val) {
+  const passedval = yield ("test1 " + val);
+  console.log('Generator Restart');
+  const passedval2 = yield "test2 " + passedval;
+  console.log('last val: ', passedval2)
+}
+
+const genIter2 = GeneratorPassVal('start!');
+
+console.log('gen 1: ', genIter2.next());
+console.log('gen 2: ', genIter2.next('passed!'));
+console.log('gen 3: ', genIter2.next('passed again!'));
+
+
+
+
+
+
+
+
+const immediatePromise = new Promise((resolve, reject) => {
+  console.log('Promise start');
+  resolve('resolved');
+});
+
+immediatePromise.then(val => console.log(val));
+
+console.log('code end');
+
+
+function getJSON(url) {
+  return new Promise((resolve, reject) => {
+    const request = new XMLHttpRequest();
+
+    request.open("GET", url);
+
+    request.onload = function() {
+      try {
+        if (this.status === 200) {
+          resolve(JSON.parse(this.response));
+        } else {
+          reject(this.status + ' ' + this.statusText);
+        }
+      } catch(e) {
+        reject(e.message);
+      }
+    }
+
+    request.onerror = function() {
+      reject(this.status + ' ' + this.statusText);
+    }
+
+    request.send();
+  });
+}
+
+getJSON('../package.json').then(res => console.log(res)).catch(e => console.log('ERROR: ' + e));
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
