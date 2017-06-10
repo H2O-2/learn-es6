@@ -603,5 +603,22 @@ console.log('fake private: ', imposter.getFeints());
 
 
 
+function* GeneratorTest() {
+  yield "test1";
+  console.log('Generator Restart');
+  yield "test2"
+}
+
+const genIter = GeneratorTest();
+
+console.log('gen 1: ', genIter.next());
+console.log('gen 2: ', genIter.next());
+console.log('gen 3: ', genIter.next());
+
+
+
+
+
+
 
 
