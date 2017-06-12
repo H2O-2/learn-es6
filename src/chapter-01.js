@@ -674,21 +674,54 @@ function getJSON(url) {
 getJSON('../package.json').then(res => console.log(res)).catch(e => console.log('ERROR: ' + e));
 
 
+function* fibonacci() { // a generator function
+  let [prev, curr] = [1, 1];
+  while (true) {
+    [prev, curr] = [curr, prev + curr];
+    yield curr;
+  }
+}
+
+for (let n of fibonacci()) {
+  console.log(n);
+  // truncate the sequence at 1000
+  if (n >= 10) {
+    break;
+  }
+}
+
+
+
+const obj1 = { test: 1 };
+console.log("test" in obj1);
+
+function MethodTest(){
+  this.swung = false;
+  this.swingSword = function(){
+   return !this.swung;
+  };
+}
+Ninja.prototype.swingSword = function(){
+  return this.swung;
+};
+
+const ninja = new MethodTest();
+console.log('swung: ', ninja.swingSword());
 
 
 
 
+let pd = {};
+pd.name = "Yoshi";
+pd.weapon = "kusarigama";
 
+Object.defineProperty(pd, "sneaky", {
+  configurable: false,
+  enumerable: false,
+  value: true,
+  writable: true
+});
 
-
-
-
-
-
-
-
-
-
-
-
-
+for(let prop in pd){
+  console.log(prop !== undefined, "An enumerated property: " + prop);
+ }
