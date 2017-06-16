@@ -725,3 +725,64 @@ Object.defineProperty(pd, "sneaky", {
 for(let prop in pd){
   console.log(prop !== undefined, "An enumerated property: " + prop);
  }
+
+
+function SuperClass(){
+  console.log('Person constructor');
+}
+function SubClass(){
+  console.log('Ninja constructor');
+}
+
+SubClass.prototype = new SuperClass();
+
+const testInheritance = new SubClass();
+console.log(testInheritance);
+
+
+
+const ninjaCollection = {
+  ninjas: ["Yoshi", "Kuma", "Hattori"],
+  get firstNinja(){
+    console.log("Getting firstNinja");
+    return this.ninjas[0];
+  },
+  set firstNinja(value){
+    console.log("Setting firstNinja");
+    this.ninjas[0] = value;
+  }
+}
+
+console.log('test getter', ninjaCollection.firstNinja);
+
+ninjaCollection.firstNinja = "Hachi";
+console.log('test setter', ninjaCollection.firstNinja);
+
+function PrivateTest() {
+  let privateVar = 'private';
+
+  this.PrivateObject = {
+    accessPrivate: function() {
+      console.log('privateVar: ', privateVar);
+    }
+  }
+}
+
+// PrivateTest.PrivateObject.accessPrivate(); // Uncaught TypeError: Cannot read property 'accessPrivate' of undefined
+
+function PrivateGetterTest() {
+  
+  let getMe = 'get!';
+
+  get getIt() {
+    console.log('getting...');
+    return this.getMe;
+  }
+}
+
+let privateGetterTest = new PrivateGetterTest();
+
+console.log('privateGetterTest', privateGetterTest.getIt);
+
+
+
