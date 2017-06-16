@@ -770,19 +770,20 @@ function PrivateTest() {
 
 // PrivateTest.PrivateObject.accessPrivate(); // Uncaught TypeError: Cannot read property 'accessPrivate' of undefined
 
-function PrivateGetterTest() {
-  
-  let getMe = 'get!';
 
-  get getIt() {
-    console.log('getting...');
-    return this.getMe;
+const proxyTest = { name: "Komei" };
+const representative = new Proxy(proxyTest, {
+  get: (target, key) => {
+    console.log("Reading " + key + " through a proxy");
+    return key in target ? target[key] : "Don't bother the emperor!";
+  },
+  set: (target, key, value) => {
+    console.log("Writing " + key + " through a proxy");
+    target[key] = value;
+    return true;
   }
-}
+});
 
-let privateGetterTest = new PrivateGetterTest();
-
-console.log('privateGetterTest', privateGetterTest.getIt);
-
-
+console.log('Through proxy', representative.name);
+representative.name = 'Tenno';
 
