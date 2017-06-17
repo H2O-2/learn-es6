@@ -787,3 +787,12 @@ const representative = new Proxy(proxyTest, {
 console.log('Through proxy', representative.name);
 representative.name = 'Tenno';
 
+const arrTest = ['a', 'aa', 'aaa'];
+
+console.log('pushed:', arrTest.push('aaaa'));
+console.log('popped:', arrTest.pop());
+
+console.log('passed?', arrTest.every(element => typeof element == 'string'));
+
+console.log('Found?', arrTest.find(element => element === 'aa'));
+
