@@ -4,7 +4,7 @@
   "description": "some code for learn new features of es6 following [http://es6.ruanyifeng.com](http://es6.ruanyifeng.com)",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",

@@ -796,3 +796,33 @@ console.log('passed?', arrTest.every(element => typeof element == 'string'));
 
 console.log('Found?', arrTest.find(element => element === 'aa'));
 
+
+function addAllArgs(a, b, c) {
+  return a + b + c;
+}
+
+const allArgs = [1, 2, 3];
+
+console.log('Spread Operator Test:', addAllArgs(...allArgs));
+
+
+const ninjas = ["Kuma", "Hattori", "Yagyu"];
+const samurai = ["Hattori", "Oda", "Tomoe"];
+
+const warriors = new Set([...ninjas, ...samurai]);
+console.log('warriors:', warriors);
+
+const ninjasSet = new Set(ninjas);
+const samuraiSet = new Set(samurai);
+
+const ninjaSamrai = new Set([...ninjasSet].filter(ninja => samuraiSet.has(ninja)));
+console.log('ninjaSamrai:', ninjaSamrai);
+
+
+const testing = [];
+testing.push("Oda");
+testing.unshift("Tomoe");
+testing.splice(1, 0, "Hattori", "Takeda");
+testing.pop();
+console.log(testing);
+
