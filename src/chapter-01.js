@@ -577,11 +577,11 @@ function testOverwrite() {
 
 console.log('testOverwrite: ', testOverwrite());
 
-console.assert(typeof fun === "function", "We access the function");
-var fun = 3;
-console.assert(typeof fun === "number", "Now we access the number");
+console.assert(typeof funVar === "function", "We access the function");
+var funVar = 3;
+console.assert(typeof funVar === "number", "Now we access the number");
 function fun(){}
-console.assert(typeof fun === "number", "Still a number");
+console.assert(typeof funVar === "number", "Still a number");
 
 
 
@@ -825,4 +825,24 @@ testing.unshift("Tomoe");
 testing.splice(1, 0, "Hattori", "Takeda");
 testing.pop();
 console.log(testing);
+
+console.log('replacement test:', "fontFamily".replace(/([A-Z])/g, "-$1").toLowerCase());
+
+const nonCapture = /((?:ninja-)+)sword/;
+console.log('non captures:', "ninja-ninja-sword".match(nonCapture));
+
+
+
+const regexTest = /\btest*\b/;
+console.log('regexTest', regexTest);
+
+
+const html = "<div class='test'><b>Hello</b> <i>world!</i></div>";
+const tag = /<(\/?)(\w+)([^>]*?)>/g;
+let match, num = 0;
+while ((match = tag.exec(html)) !== null) {
+  console.log('match:', match);
+  num++;
+}
+
 
