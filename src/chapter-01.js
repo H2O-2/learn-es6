@@ -832,6 +832,21 @@ const nonCapture = /((?:ninja-)+)sword/;
 console.log('non captures:', "ninja-ninja-sword".match(nonCapture));
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const testDiv = document.querySelector('div');
+
+  testDiv.setAttribute('id', 'test');
+  console.log('Added div id:', testDiv.id);
+
+  testDiv.style.background = "white";
+  console.log(testDiv.style);
+
+  const computedStyle = getComputedStyle(testDiv);
+  console.log('computedStyle:', computedStyle);
+  console.log('getPropertyValue:', computedStyle.getPropertyValue('font-size'));
+  console.log('amalgam:', computedStyle.getPropertyValue('border'));
+});
+
 
 const regexTest = /\btest*\b/;
 console.log('regexTest', regexTest);
