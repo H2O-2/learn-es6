@@ -860,5 +860,9 @@ while ((match = tag.exec(html)) !== null) {
   num++;
 }
 
+window.onload = function() {
+  console.log('get action:', document.getElementById('form').action);
+}
 
-
+console.log('zero-fill right shift negative', -1 >>> 0);
+console.log('zero-fill right shift positive', 1 >>> 0);
