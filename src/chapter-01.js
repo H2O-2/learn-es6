@@ -866,3 +866,22 @@ window.onload = function() {
 
 console.log('zero-fill right shift negative', -1 >>> 0);
 console.log('zero-fill right shift positive', 1 >>> 0);
+
+
+const testStrTemplate = {
+  field1: 'str',
+  field2: 'template',
+  field3: 'skip'
+}
+
+console.log(`${testStrTemplate.field2} test on ${testStrTemplate.field1}`);
+console.log(`multi
+line
+test`);
+
+const { destruc1, destruc2 } = testStrTemplate;
+console.log("destructure test", destruc1, destruc2);
+
+const destrucArr = ['first', 'skip', 'third'];
+const [skip1, , skip2] = destrucArr;
+console.log("destructre Array", skip1, skip2);
